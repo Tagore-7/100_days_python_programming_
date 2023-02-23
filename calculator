@@ -1,0 +1,53 @@
+#following code for a calculator
+from art import logo
+
+
+def add(a, b):
+    return a + b
+
+
+def sub(a, b):
+    return a - b
+
+
+def mul(a, b):
+    return a * b
+
+
+def div(a, b):
+    return a / b
+
+
+dict = {"+": add, "-": sub, "*": mul, "/": div}
+
+
+def calculator():
+    print(logo)
+    a = float(input(" Enter a number "))
+    b = float(input("Enter a number"))
+    k = []
+    for d in dict.keys():
+        print(d)
+        k.append(d)
+    d = input("choose a function")
+    e = dict[d]
+    answer = 0
+    answer += (e(a, b))
+    print(answer)
+    x = input("enter y to continue n to exit or enter z for a new cal ")
+    f = True
+    while (f):
+        j = input("choose another function")
+        h = float(input("enter the number"))
+        v = dict[j]
+        answer = v(answer, h)
+        print(answer)
+        x = input("enter y to continue n to exit")
+        if x == 'y':
+            answer = answer
+        else:
+            f = False
+            calculator()
+
+
+calculator()
