@@ -1,0 +1,232 @@
+data = {
+    "espresso": {
+        "ingredients": {
+            "water": 50,
+            "coffee": 18,
+        },
+        "cost": 1.5,
+    },
+    "latte": {
+        "ingredients": {
+            "water": 200,
+            "milk": 150,
+            "coffee": 24,
+        },
+        "cost": 2.5,
+    },
+    "cappuccino": {
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+        },
+        "cost": 3.0,
+    }
+}
+
+Tank = {
+    'water':300,
+    'milk':200,
+    'coffee':100,
+    'coins' : 0
+}
+
+#Tank ingredients
+water_have = Tank['water']
+coffee_have =Tank['coffee']
+milk_have = Tank['milk']
+def clear():
+    import os
+
+# check if the system is Windows or Unix-based
+    if os.name == 'nt':   # for Windows
+        os.system('cls')
+    else:   # for Unix-based systems
+        os.system('clear')
+
+def Refill_Tank():
+    Tank['water'] = 300
+    Tank['coffee'] = 100
+    Tank['milk'] = 200
+
+
+# print(data['espresso']['ingredients']['water'])
+def espresso_money():
+    global Tank
+    p = int(input('Enter the penny coin in machine $0.01 '))
+    d = int(input('Enter the dime coin in machine $0.10 '))
+    n = int(input('Enter the nickel coin in machine $0.05 '))
+    q = int(input('Enter the quarter coin in machine $0.25 '))
+    total_amount = ((0.01*p) + (0.1*d) +(0.05*n) + (0.25*q) )
+    if(total_amount == 1.50):
+        Tank['coins'] += total_amount
+        espresso()
+    elif(total_amount > 1.50):
+        print(f"Your money is High to buy this coffee try another coffee ")
+        user_choice()
+
+    else:
+        print(f"Your money is low to buy this Coffee try another coffee ")
+        user_choice()
+def latte_money():
+    global Tank
+    p = int(input('Enter the penny coin in machine $0.01 '))
+    d = int(input('Enter the dime coin in machine $0.10 '))
+    n = int(input('Enter the nickel coin in machine $0.05 '))
+    q = int(input('Enter the quarter coin in machine $0.25 '))
+    total_amount = ((0.01 * p) + (0.1 * d) + (0.05 * n) + (0.25 * q))
+    if (total_amount == 2.50):
+        Tank['coins'] += total_amount
+        latte()
+    elif (total_amount > 2.50):
+        print(f"Your money is High to buy this coffee try another coffee  ")
+        user_choice()
+
+    else:
+        print(f"Your money is low to buy this Coffee try another coffee ")
+        user_choice()
+
+def cappuccino_money():
+    global Tank
+    p = int(input('Enter the penny coin in machine $0.01 '))
+    d = int(input('Enter the dime coin in machine $0.10 '))
+    n = int(input('Enter the nickel coin in machine $0.05 '))
+    q = int(input('Enter the quarter coin in machine $0.25 '))
+    total_amount = ((0.01 * p) + (0.1 * d) + (0.05 * n) + (0.25 * q))
+    if (total_amount == 3.00):
+        Tank['coins'] += total_amount
+        cappuccino()
+    elif (total_amount > 3.00):
+        print(f"Your money is High to buy this coffee try another coffee ")
+        user_choice()
+
+    else:
+        print(f"Your money is low to buy this Coffee try anothr coffee ")
+        user_choice()
+
+
+
+def espresso():
+    global Tank
+
+
+    water_want = data['espresso']['ingredients']['water']
+    coffee_want = data['espresso']['ingredients']['coffee']
+    water_have = Tank['water']
+    coffee_have = Tank['coffee']
+    # print(water_have,water_want)
+    # print(coffee_have,coffee_want)
+
+    if((coffee_have >= coffee_want) and (water_have >= water_want)):
+        Tank['water'] = water_have - water_want
+        Tank['coffee'] = coffee_have - coffee_want
+        print("You coffee is ready Enjoy the coffee :) ")
+        print(f"Coins in Tank : {Tank['coins']}$")
+
+        # print(Tank['water'])
+        # print(Tank['coffee'])
+        # print(Tank['milk'])
+        #clear()
+        user_choice()
+
+    else:
+
+        print(" Coffe Tank dont have enough ingredients wait a sec Tank refill the ingredients and try again: ")
+        Refill_Tank()
+
+        user_choice()
+
+
+
+def latte():
+    global Tank
+
+
+    water_want = data['latte']['ingredients']['water']
+    coffee_want = data['latte']['ingredients']['coffee']
+    milk_want = data['latte']['ingredients']['milk']
+    water_have = Tank['water']
+    coffee_have = Tank['coffee']
+    milk_have = Tank['milk']
+    # print(water_have, water_want)
+    # print(coffee_have, coffee_want)
+    # print(milk_have, milk_want)
+    if ((coffee_have >= coffee_want) and (water_have >= water_want) and (milk_have >= milk_want)):
+        Tank['water'] = water_have - water_want
+        Tank['coffee'] = coffee_have - coffee_want
+        Tank['milk'] = milk_have - milk_want
+        print("You coffee is ready Enjoy the coffee :) ")
+
+        print(f"Coins in Tank : {Tank['coins']}$ ")
+
+        # print(Tank['water'])
+        # print(Tank['coffee'])
+        # print(Tank['milk'])
+        #clear()
+        user_choice()
+
+
+    else:
+        print(" Coffe Tank dont have enough ingredients wait a sec Tank refill the ingredients and try again: ")
+        Refill_Tank()
+        user_choice()
+
+
+def cappuccino():
+    # print(" your coffe is ready ")
+    global Tank
+
+    water_want = data['cappuccino']['ingredients']['water']
+    coffee_want = data['cappuccino']['ingredients']['coffee']
+    milk_want = data['cappuccino']['ingredients']['milk']
+    water_have = Tank['water']
+    coffee_have = Tank['coffee']
+    milk_have = Tank['milk']
+    # print(water_have, water_want)
+    # print(coffee_have, coffee_want)
+    # print(milk_have, milk_want)
+
+    if ((coffee_have >= coffee_want) and (water_have >= water_want) and (milk_have >= milk_want)):
+        Tank['water'] = water_have - water_want
+        Tank['coffee'] = coffee_have - coffee_want
+        Tank['milk'] = milk_have - milk_want
+        print("You coffee is ready Enjoy the coffee :) ")
+        print(f"Coins in Tank : {Tank['coins']}$ ")
+        # print(Tank['water'])
+        # print(Tank['coffee'])
+        # print(Tank['milk'])
+
+        #clear()
+
+        user_choice()
+
+    else:
+        print(" Coffe Tank dont have enough ingredients wait a sec Tank refill the ingredients and try again: ")
+        Refill_Tank()
+        user_choice()
+
+
+
+def user_choice():
+    user_drink = input('Enter which coffee u want ? (espresso/latte/cappuccino ): ')
+    if(user_drink == 'espresso'):
+        espresso_money()
+    elif(user_drink == 'latte'):
+        latte_money()
+    elif(user_drink == 'cappuccino'):
+        cappuccino_money()
+    else:
+        print(' Your choosen coffee is not there in the machine ')
+        user_choice()
+
+
+# money()
+# espresso()
+print(Tank['water'])
+print(Tank['coffee'])
+print(Tank['milk'])
+
+user_choice()
+# print("Hello world! ")
+# clear()
+# print('WElcoem')
